@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'aws'
-require 'mime/types'
 
 get '/upload' do
     haml :upload, :format => :html5
