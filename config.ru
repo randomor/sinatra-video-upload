@@ -1,2 +1,2 @@
-require './ltvideo'
+require './video.rb'
 run Sinatra::Application
