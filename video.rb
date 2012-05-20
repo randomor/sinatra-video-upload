@@ -6,13 +6,22 @@ get '/upload' do
 end
 
 post '/upload' do
+  puts "uploading..."
+  puts params
+  
   unless params[:file] &&
          (tempfile = params[:file][:tempfile]) &&
          (name = params[:file][:filename])
     @error = "No file selected"
     return haml(:upload)
   end
+<<<<<<< HEAD
 
+=======
+  
+  # STDERR.puts "Uploading file, original name #{name.inspect}"
+  
+>>>>>>> added status code return and log output
   
   s3 = AWS::S3.new(
   :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
@@ -21,9 +30,15 @@ post '/upload' do
 
   bucket = s3.buckets[ENV['S3_BUCKET_NAME']]
 
+<<<<<<< HEAD
   obj = bucket.objects["#{name}"]
   obj.write(tempfile.read)
 
   puts "Uploaded!"
+=======
+  puts "Upload complete"
+  
+  200
+>>>>>>> added status code return and log output
 end
 
