@@ -16,8 +16,14 @@ post '/upload' do
     return haml(:upload)
   end
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+  
+  # STDERR.puts "Uploading file, original name #{name.inspect}"
+  
+>>>>>>> added status code return and log output
   
   # STDERR.puts "Uploading file, original name #{name.inspect}"
   
@@ -28,6 +34,7 @@ post '/upload' do
   :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
   )
 
+<<<<<<< HEAD
   bucket = s3.buckets[ENV['S3_BUCKET_NAME']]
 
 <<<<<<< HEAD
@@ -35,6 +42,11 @@ post '/upload' do
   obj.write(tempfile.read)
 
   puts "Uploaded!"
+=======
+  puts "Upload complete"
+  
+  200
+>>>>>>> added status code return and log output
 =======
   puts "Upload complete"
   
