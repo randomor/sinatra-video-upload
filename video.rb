@@ -15,42 +15,14 @@ post '/upload' do
     @error = "No file selected"
     return haml(:upload)
   end
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-=======
   
   # STDERR.puts "Uploading file, original name #{name.inspect}"
-  
->>>>>>> added status code return and log output
-  
-  # STDERR.puts "Uploading file, original name #{name.inspect}"
-  
->>>>>>> added status code return and log output
-  
-  s3 = AWS::S3.new(
-  :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
-  :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-  )
+  File.open("./files/"+Time.now.to_i.to_s+"-"+name, 'w') do |f|
+    f.write(tempfile.read)
+  end
 
-<<<<<<< HEAD
-  bucket = s3.buckets[ENV['S3_BUCKET_NAME']]
-
-<<<<<<< HEAD
-  obj = bucket.objects["#{name}"]
-  obj.write(tempfile.read)
-
-  puts "Uploaded!"
-=======
+  
   puts "Upload complete"
-  
   200
->>>>>>> added status code return and log output
-=======
-  puts "Upload complete"
-  
-  200
->>>>>>> added status code return and log output
 end
 
